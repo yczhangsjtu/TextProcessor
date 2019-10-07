@@ -2,6 +2,11 @@ import React from "react";
 
 import "./Components.css";
 
+const regularExps = {
+	codifyEnglishWordsInput: new RegExp(/([^!-~]|\b)([!-_a-~](?:[ -~]*[!-_a-~])?)([^!-~]|\b)/g),
+	codifyEnglishWordsOutput: "$1`$2`$3"
+};
+
 class Markdown extends React.Component {
 	constructor(props) {
 		super(props);
@@ -34,7 +39,9 @@ class Markdown extends React.Component {
 	codifyEnglishWords() {
 		this.setState(state => {
 			return {
-				output: state.input
+				output: state.input.replace(
+					regularExps.codifyEnglishWordsInput,
+					regularExps.codifyEnglishWordsOutput)
 			};
 		});
 	}
@@ -52,19 +59,19 @@ class Markdown extends React.Component {
 
 	render() {
 		return (
-			<div class="Page">
-				<div class="Fields">
-					<textarea class="Field" value={this.state.input} onChange={this.onInputChange}></textarea>
-					<textarea class="Field" value={this.state.output} readOnly />
+			<div className="Page">
+				<div className="Fields">
+					<textarea className="Field" value={this.state.input} onChange={this.onInputChange}></textarea>
+					<textarea className="Field" value={this.state.output} readOnly/>
 				</div>
-				<div class="Buttons">
-					<button class="ActionButton" onClick={this.cleanInput}>
+				<div className="Buttons">
+					<button className="ActionButton" onClick={this.cleanInput}>
 						Clean Input
 					</button>
-					<button class="ActionButton" onClick={this.cleanOutput}>
+					<button className="ActionButton" onClick={this.cleanOutput}>
 						Clean Output
 					</button>
-					<button class="ActionButton" onClick={this.codifyEnglishWords}>
+					<button className="ActionButton" onClick={this.codifyEnglishWords}>
 						Codify English Words
 					</button>
 				</div>
