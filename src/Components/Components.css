@@ -1,0 +1,36 @@
+.Page {
+	display: flex;
+	flex-direction: row;
+}
+
+.Fields {
+	display: flex;
+	flex-direction: column;
+}
+
+.Buttons {
+	display: flex;
+	flex-direction: column;
+}
+
+.Field {
+	margin: 5pt 5pt;
+	width: 60vw;
+	height: 40vh;
+	min-width: 200pt;
+	min-height: 100pt;
+	font-family: "Courier";
+	font-size: 20px;
+	resize: none;
+}
+
+.ActionButton {
+	margin: 5pt 5pt;
+	padding: 10pt 10pt;
+	width: 20vw;
+	border-radius: 5pt;
+}
+
+.ActionButton:focus {
+	outline: none;
+}
